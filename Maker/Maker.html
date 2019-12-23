@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="maker-style.css">
+        <script src="maker-script.js"></script>
+    </head>
+    <body>
+        <div id="navigation-wrapper" class="fade-out">
+            <div id="theme-navigation-wrapper">
+            </div>
+        </div>
+        <div id="main-background">
+            <div id="main-area" class="intro">
+                <button id="delete-question" class="invisible fade-out disabled" onclick="DeleteSelectedQuestion()" disabled>Delete Question</button>
+                <button id="add-question" class="invisible fade-out" onclick="CreateQuestion()">Add Question</button>
+                
+                <button id="theme-create" class="" onclick="GetStarted()">Create Quiz</button>
+                
+                <div id="theme-inputs-wrapper">
+                    <input class="theme-input" placeholder="Theme #1" data-input-index="0">
+                    <button class="input-cancel" data-cancel-index="0" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #2" data-input-index="1">
+                    <button class="input-cancel" data-cancel-index="1" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #3" data-input-index="2">
+                    <button class="input-cancel" data-cancel-index="2" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #4" data-input-index="3">
+                    <button class="input-cancel" data-cancel-index="3" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #5" data-input-index="4">
+                    <button class="input-cancel" data-cancel-index="4" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #6" data-input-index="5">
+                    <button class="input-cancel" data-cancel-index="5"onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #7" data-input-index="6">
+                    <button class="input-cancel" data-cancel-index="6" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #8" data-input-index="7">
+                    <button class="input-cancel" data-cancel-index="7" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #9" data-input-index="8">
+                    <button class="input-cancel" data-cancel-index="8" onclick="RemoveThemeInput()">&#10006;</button>
+                    <input class="theme-input" placeholder="Theme #10" data-input-index="9">
+                    <button class="input-cancel" data-cancel-index="9"onclick="RemoveThemeInput()">&#10006;</button>
+                </div>
+                
+                <button id="confirm-themes" class="invisible fade-out" onclick="ConfirmThemes()">Confirm</button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -69,15 +69,43 @@ function HideQuizMenu() {
         setTimeout(() => {
             this.page_elements.menus.quiz.classList.toggle('hidden');
         }, 200);
-    }).then(() => {
-        setTimeout(() => {
-            this.page_elements.menus.quiz.classList.toggle('invisible');
-        }, 250);
     });
 }
 
 function ShowThemeInfo(theme) {
     //  TO-DO:  SHOW THE THEME MENU FROM THEME-MENUS-WRAPPER
+
+    let index = theme.dataset.index;
+    let theme_menu = theme_map[index].menu;
+
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            theme_menu.classList.toggle('invisible');
+        }, 150);
+        resolve();
+    }).then(() => {
+        setTimeout(() => {
+            theme_menu.style.opacity = 1;
+        }, 200)
+    })
+}
+
+function HideThemeInfo(button) {
+    //  TO-DO:  SHOW THE THEME MENU FROM THEME-MENUS-WRAPPER
+
+    let index = button.dataset.index;
+    let theme_menu = theme_map[index].menu;
+
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            theme_menu.style.opacity = 0;
+        }, 150);
+        resolve();
+    }).then(() => {
+        setTimeout(() => {  
+            theme_menu.classList.toggle('invisible');
+        }, 200)
+    })
 }
 
 function CheckNumberInput() {
@@ -163,6 +191,11 @@ function AddQuestions(wrapper, theme_index) {
         question_answer.classList.add('answer');
         question.appendChild(question_answer);
 
+        let extra_info = document.createElement('textarea');
+        extra_info.placeholder = 'Interesting information';
+        extra_info.classList.add('extra-info');
+        question.appendChild(extra_info);
+
         let ready = document.createElement('button');
         ready.innerText = 'Ready';
         ready.classList.add('ready-button');
@@ -172,6 +205,7 @@ function AddQuestions(wrapper, theme_index) {
         question_map[theme_index][i]['text'] =  question_text;
         question_map[theme_index][i]['media'] =  question_media_path;
         question_map[theme_index][i]['answer'] =  question_answer;
+        question_map[theme_index][i]['extra_info'] =  extra_info;
     }
 }
 
@@ -179,7 +213,7 @@ function CreateTitleField(wrapper) {
     let input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Unfinished Theme';
-    input.classList.add('theme-title-input');
+    input.classList.add('theme-title-input', 'menu-title');
 
     wrapper.appendChild(input);
 
@@ -197,7 +231,36 @@ function CreateThemeMenus(wrapper) {
 
         CreateTitleField(menu);
 
+        let displays_wrapper = document.createElement('div');
+        displays_wrapper.classList.add('displays-wrapper');
+
+        for (let j = 0; j < quiz.question_ammount; j++) {
+            let question_display = document.createElement('button');
+            question_display.classList.add('display-question');
+            question_display.innerText = 'Q' + (j+1);
+            question_display.dataset.display_index = j;
+
+            question_display.addEventListener('click', () => {
+                ShowQuestion(question_display);
+            });
+
+            displays_wrapper.appendChild(question_display);
+        }
+
+        menu.appendChild(displays_wrapper);
+
         AddQuestions(menu, i);
+
+        let return_button = document.createElement('button');
+        return_button.classList.add('confirm-button', 'theme-confirm');
+        return_button.innerHTML = '<span>Confirm Theme</span>';
+        return_button.dataset.index = i;
+
+        return_button.addEventListener('click', () => {
+            HideThemeInfo(return_button);
+            ShowQuizMenu();
+        });
+        menu.appendChild(return_button);
     }   
 }
 

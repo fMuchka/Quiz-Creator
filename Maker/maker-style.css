@@ -158,3 +158,13 @@ body{
     background-color: var(--bright-yellow);
     box-shadow: none;
 }
+
+#theme-menus-wrapper {
+   display: contents;
+}
+
+button.confirm-button.theme-confirm {
+    height: 40%;
+    width: 40%;
+    margin-bottom: 15px;
+}

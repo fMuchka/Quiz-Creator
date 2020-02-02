@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+      <!--<link rel="stylesheet" type="text/css" href="maker-style.css">-->  
+        <script src="reader-script.js"></script>
+        <script src="quiz.js"></script>
+        <script src="team.js"></script>
+    </head>
+    <body>
+        <div id="main-menu" class="menu">
+            <span class="menu-title">Quiz Maker</span>
+            <button class="menu-button" onclick="ShowCreateMenu()">
+                <span>Create Quiz</span>
+            </button>
+            <input type="file" id="file-upload" onchange="loadFile()">
+            <label for="file-upload">Select Quiz</label>
+        </div>
+
+        <div id="create-menu" class="menu hidden" style="opacity: 0">
+            <span class="menu-title">Create Quiz</span>
+            <div class="input-wrapper">
+                <span>Number of Themes</span>
+                <input id="theme-ammount" type="number" placeholder="0" min="0" max='99' onchange="CheckNumberInput()">
+            </div>
+            <div class="input-wrapper">
+                <span>Questions per Theme</span>
+                <input id="question-ammount" type="number" placeholder="0" min="0" max='99' onchange="CheckNumberInput()">
+            </div>
+
+            <button id="create-confirm" class="confirm-button disabled" disabled onclick="StartCreation()">
+                <span>Confirm</span>
+            </button>
+        </div>
+
+        <div id="quiz-menu" class="menu hidden" style="opacity: 0;">
+            <span class="menu-title">Quiz Menu</span>
+            <button class="menu-button" onclick="CreateJSON()">Create JSON</button>
+            <div id="themes-wrapper">
+
+            </div>
+        </div>
+
+        <div id="theme-menus-wrapper">
+            
+        </div>
+    </body>
+</html>

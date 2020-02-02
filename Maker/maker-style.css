@@ -54,7 +54,7 @@ body{
     background-color: var(--bright-yellow);
 }
 
-.menu-title{
+.menu-title, input.media-path-input, textarea.answer, textarea.extra-info, textarea.question{
     margin: auto;
     font-size: 80px;
     font-family: 'Roboto', sans-serif;
@@ -96,7 +96,7 @@ body{
 .input-wrapper > input {
     height: 70%;
     font-size: 60px;
-    padding: 0px 2rem 0px 2rem;
+    padding: 0px 10px 0px 10px;
     width: 20%;
     align-self: center;
     text-align: center;
@@ -167,4 +167,116 @@ button.confirm-button.theme-confirm {
     height: 40%;
     width: 40%;
     margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.displays-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50px;
+}
+
+button.display-question {
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    width: 90px;
+    height: 35px;
+    justify-content: center;
+    border: none;
+    background-color: var(--bright-blue);
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow);
+}
+
+button.display-question:hover {
+    background-color: var(--bright-yellow);
+    box-shadow: none;
+}
+
+.theme-menu {
+    grid-template-rows: 150px 70px 1fr 100px;
+}
+
+.question-wrapper {
+    display: grid;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    transition: var(--transition-fast);
+}
+
+textarea.question, input.media-path-input, textarea.answer, textarea.extra-info {
+    margin-bottom: 10px;
+    height: 45px;
+    font-size: 16px;
+    text-align: left;
+    line-height: inherit;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.ready-wrapper {
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+.ready-wrapper input {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked + .ready-label
+ {
+    background-color: var(--bright-green);
+}
+
+label.ready-label {
+    font-size: 30px;
+    background-color: var(--white);
+    border-radius: 5px;
+    width: 70%;
+    text-align: center;
+    user-select: none;
+    transition: var(--transition-fast);
+}
+
+.answer-wrapper {
+    display: grid;
+    grid-template-areas:
+        "points step"
+        "answer answer";
+}
+
+input.point-input {
+    width: 50%;
+    grid-area: points;
+    justify-self: end;
+    margin-right: 5px;
+}
+
+input.step-input {
+    width: 50%;
+    grid-area: step;
+    margin-left: 5px;
+}
+
+textarea.answer {
+    grid-area: answer;
+}
+
+textarea.extra-info {
+    margin-bottom: 0;
+}
+
+button.display-question.selected {
+    background-color: var(--bright-yellow);
+}
+
+button.display-question.ready {
+    background-color: var(--bright-green);
 }

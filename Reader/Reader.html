@@ -2,47 +2,73 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
-      <!--<link rel="stylesheet" type="text/css" href="maker-style.css">-->  
+        <link rel="stylesheet" type="text/css" href="reader.css">  
         <script src="reader-script.js"></script>
         <script src="quiz.js"></script>
         <script src="team.js"></script>
+        <script src="Chart.bundle.js"></script>
     </head>
     <body>
-        <div id="main-menu" class="menu">
-            <span class="menu-title">Quiz Maker</span>
-            <button class="menu-button" onclick="ShowCreateMenu()">
-                <span>Create Quiz</span>
-            </button>
-            <input type="file" id="file-upload" onchange="loadFile()">
-            <label for="file-upload">Select Quiz</label>
-        </div>
+        <!-- Right corner logo -->
+        <img id="logo" src="sviniPivemNezarmoutis_logo.png">
 
-        <div id="create-menu" class="menu hidden" style="opacity: 0">
-            <span class="menu-title">Create Quiz</span>
+        <div id="quick-access" style="left: -160px;">
+            <button class="button" onclick="showFinalResults()">Výsledky</button>
+            <button class="button" onclick="showNavigation()">Témata</button>
+        </div>
+        
+        <!-- Main menu -->
+        <div id="main-menu" class="menu fade-able">
+            <span class="menu-title">Svini Pivem Neurazíš</span>
+            <img class="quiz-logo" src="c:\_code\_projects\javascript\Quiz Creator v2\Quiz-Creator\Reader\fm_logo.png" alt="Chybí logo :(">
             <div class="input-wrapper">
-                <span>Number of Themes</span>
-                <input id="theme-ammount" type="number" placeholder="0" min="0" max='99' onchange="CheckNumberInput()">
-            </div>
-            <div class="input-wrapper">
-                <span>Questions per Theme</span>
-                <input id="question-ammount" type="number" placeholder="0" min="0" max='99' onchange="CheckNumberInput()">
-            </div>
-
-            <button id="create-confirm" class="confirm-button disabled" disabled onclick="StartCreation()">
-                <span>Confirm</span>
-            </button>
-        </div>
-
-        <div id="quiz-menu" class="menu hidden" style="opacity: 0;">
-            <span class="menu-title">Quiz Menu</span>
-            <button class="menu-button" onclick="CreateJSON()">Create JSON</button>
-            <div id="themes-wrapper">
-
+                <input type="file" id="file-upload" onchange="loadFile()">
+                <label for="file-upload">Vyber kvíz</label>
             </div>
         </div>
 
-        <div id="theme-menus-wrapper">
+        <!-- Create teams -->
+        <div id="create-team" class="menu fade-able">
+            <span class="menu-title">Tvorba týmů</span>
+            <div contenteditable="true">
+                <ul id="team-list">
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="button" onclick="createTeam()">Start</div>
+        </div>
+
+        <div id="navigation" class="menu fade-able">
+
+        </div>
+
+        <div id="enlarge-modal-background" onclick="minimizeIMG()">
+            <img>
+            </img>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz-wrapper">
+        <div id="previous-control" onmousemove="showPreviousArrow()" onmouseout="hidePreviousArrow()">
+            <div id="previous" class="fade-able" onclick="nextQuestion(-1)">
+                <div></div>
+                <span>Předchozí</span>               
+            </div>
+        </div>
+        <div id="next-control" onmousemove="showNextArrow()" onmouseout="hideNextArrow()">
+            <div id="next" class="fade-able" onclick="nextQuestion(1)">
+                <span>Další</span>
+                <div></div>
+            </div>
+        </div>
             
+
+        </div>
+
+        <div id="final-results" class="fade-able">
+            <canvas id="final-results-graphs"></canvas>
         </div>
     </body>
 </html>

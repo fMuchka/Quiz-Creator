@@ -671,28 +671,6 @@ function minimizeIMG() {
     fadeArrows('in');
 }
 
-
-function showPreviousArrow(){
-    let previous = document.getElementById('previous');
-    previous.style.left = "30px";
-}
-
-function hidePreviousArrow(){
-    let previous = document.getElementById('previous');
-    previous.style.left = "-150px";
-}
-
-
-function showNextArrow(){
-    let next = document.getElementById('next');
-    next.style.right = "30px";
-}
-
-function hideNextArrow(){
-    let next = document.getElementById('next');
-    next.style.right = "-150px";
-}
-
 window.onload = () => {
     document.quiz = null;
 

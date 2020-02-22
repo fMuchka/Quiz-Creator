@@ -167,7 +167,14 @@ div#previous {
     display: none;
     position: fixed;
     /* bottom: 30px; */
-    left: -150px;
+    left: -50px;
+    top: 50vh;
+    height: 80px;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey);
+    border-radius: 0 50px 50px 0;
 }
 
 div#previous:hover div{
@@ -185,7 +192,7 @@ div#previous:hover span{
     height: 0;
     border-top: 16px solid transparent;
     border-bottom: 16px solid transparent;
-    border-right: 20px solid var(--blue);
+    border-right: 20px solid var(--black);
 }
 
 #previous span {
@@ -200,8 +207,14 @@ div#previous:hover span{
 div#next {
     display: none;
     position: fixed;
-    /* top: 50vh; */
-    right: -150px;
+    top: 50vh;
+    right: -50px;
+    height: 80px;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey);
+    border-radius: 50px 0 0 50px;
 }
 
 div#next:hover div{
@@ -219,7 +232,7 @@ div#next:hover span{
     height: 0;
     border-top: 16px solid transparent;
     border-bottom: 16px solid transparent;
-    border-left: 20px solid var(--blue);
+    border-left: 20px solid var(--black);
 }
 
 #next span {
@@ -569,4 +582,14 @@ li.current:first-child:before {
     left: 0px;
     /* border: 1px solid var(--black); */
     z-index: 0;
+}
+
+div#previous:hover {
+    left: 0px;
+    cursor: pointer;
+}
+
+div#next:hover {
+    right: 0px;
+    cursor: pointer;
 }

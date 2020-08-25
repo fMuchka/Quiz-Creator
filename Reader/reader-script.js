@@ -166,9 +166,21 @@ function nextQuestion(direction) {
                     break;
                 }
                 else{
-                    // end of answers, go back to navigation
-                    to_show = document.getElementById('navigation');
-                    fadeArrows('out');
+                    if (document.quiz.current.answerTable === false) {
+                        to_show = document.querySelectorAll('.answer-table[data-id="t:' + current.theme + '"]')[0];
+                        document.quiz.current.answerTable = true;    
+                    }
+                    else{
+                        document.quiz.current.answerTable = false;   
+                        // end of answers, go back to navigation
+                        to_show = document.getElementById('navigation');
+
+                        let answer = document.querySelectorAll('.answer-table[data-id="t:' + document.quiz.current.t  + '"]')[0];
+
+                        fadeOut(answer);
+                        fadeArrows('out');
+                    }
+                    
                     break;
                 }
             }
@@ -339,6 +351,7 @@ function createQuestionSlide() {
                         new_dom.src = questions[j].media;
                     }
                     
+                    document.quiz.mediaRef[i][j] = new_dom;
         
                     return new_dom;    
                 }
@@ -468,6 +481,16 @@ function createAnswerSlide() {
                 return new_dom;
             }
 
+            let media = () => {
+                let original_dom = document.quiz.mediaRef[i][j];
+                
+                if (original_dom !== undefined){
+                    let new_dom = original_dom.cloneNode(true);
+                    new_dom.classList.add('answer-media');
+                    //return new_dom;
+                }
+            }
+
             /**
              * Answer table
              */
@@ -482,9 +505,11 @@ function createAnswerSlide() {
                 text = questions[j].answer;
                 answer.innerHTML = '<span>' + text + '</span>';
 
-                new_dom.appendChild(answer);
+                //new_dom.appendChild(answer);
+                
+                return answer;
 
-                for (let k = 0; k < team.length; k++) {
+        /*    for (let k = 0; k < team.length; k++) {
                     let input = document.createElement('INPUT');
                     let label = document.createElement('LABEL');
                     let wrapper = document.createElement('DIV'); 
@@ -504,21 +529,63 @@ function createAnswerSlide() {
                     wrapper.appendChild(input);
 
                     new_dom.appendChild(wrapper);
-                }
-
-                return new_dom;
+                }*/
             }
             
             q_slide.appendChild(theme_display());
             q_slide.appendChild(point_display());
             q_slide.appendChild(progress_display());
             q_slide.appendChild(text());
+            let media_dom = media();
+            if (media_dom !== undefined) {
+                q_slide.appendChild(media());    
+            }
             q_slide.appendChild(answerTable());
             
 
             wrapper.appendChild(q_slide);
         }
+        let answerTable = createAnswerTable(i);
+
+        wrapper.appendChild(answerTable);
     }
+}
+
+function createAnswerTable(themeIndex){
+    let new_dom = document.createElement('DIV');
+    new_dom.classList.add('answer-table');
+    new_dom.dataset.id = 't:' + themeIndex;
+    let team = document.quiz.team;
+    let questions = document.quiz.themeArray[themeIndex].question;
+        
+    for (let k = 0; k < team.length; k++) {
+        let teamWrapper = document.createElement('DIV');
+        teamWrapper.classList.add('team-answers');
+        for (let j = 0; j < questions.length; j++) {
+            let input = document.createElement('INPUT');
+            let label = document.createElement('LABEL');
+            let wrapper = document.createElement('DIV'); 
+            let identity = "inp:q:" + j + "; t:" + themeIndex;
+
+            label.for = identity;
+            label.innerHTML = "<span>" + team[k].name + ' - otázka ' + (j+1)  + "</span>";
+
+            input.type = "number";
+            input.name = identity;
+            input.step = questions[j].step;
+            input.max = questions[j].points;
+            input.min = 0;
+            input.dataset.team = k;
+            
+            wrapper.appendChild(label);
+            wrapper.appendChild(input);
+
+            teamWrapper.appendChild(wrapper);
+        }
+        new_dom.appendChild(teamWrapper);
+    }    
+
+    return new_dom;
 }
 
 function showFinalResults() {
@@ -536,11 +603,18 @@ function showFinalResults() {
                     data: [0, 10, 5, 2, 20, 30, 45]
                 }]*/
 
-    const colors = ['rgb(234, 32, 39)', 'rgb(0, 98, 102)', 'rgb(27, 20, 100)', 'rgb(6, 82, 221)',
+  /*  const colors = ['rgb(234, 32, 39)', 'rgb(0, 98, 102)', 'rgb(27, 20, 100)', 'rgb(6, 82, 221)',
                     'rgb(0, 148, 50)', 'rgb(238, 90, 36)', 'rgb(247, 159, 31)', 'rgb(163, 203, 56)',
                     'rgb(18, 137, 167)', 'rgb(18, 203, 196)', 'rgb(196, 229, 56)', 'rgb(255, 195, 18)',
                     'rgb(237, 76, 103)', 'rgb(253, 167, 223)', 'rgb(181, 52, 113)', 'rgb(111, 30, 81)'
-                    ];
+                    ];*/
+
+    const colors = ['#5899DA', '#E8743B', '#19A979', '#ED4A7B', '#945ECF',
+                    '#13A4B4', '#525DF4', '#BF399E', '#6C8893', '#EE6868',
+                    '#2F6497'
+                    ]
+
+    let maxPoints = 0;
 
     for (let i = 0; i < document.quiz.themeArray.length; i++) {
         let themeDataset = {label: document.quiz.themeArray[i].title,
@@ -553,17 +627,57 @@ function showFinalResults() {
             themeDataset.data.push(team[j].addThemeScore(i));
         }
 
+        maxPoints += document.quiz.getThemeMaxPoint(i);
         data.datasets.push(themeDataset);
     }
 
     for (let i = 0; i < team.length; i++) {
         data.labels.push(team[i].name);
     }
+    
+    const totalizer = {
+        id: 'totalizer',
+      
+        beforeUpdate: chart => {
+          let totals = {}
+          let utmost = 0
+      
+          chart.data.datasets.forEach((dataset, datasetIndex) => {
+            if (chart.isDatasetVisible(datasetIndex)) {
+              utmost = datasetIndex
+              dataset.data.forEach((value, index) => {
+                totals[index] = (totals[index] || 0) + value
+              })
+            }
+          })
+      
+          chart.$totalizer = {
+            totals: totals,
+            utmost: utmost
+          }
+        }
+      }
 
     let chart = new Chart(context, {
         type: 'bar',
         data: data,
+        plugins: [totalizer],
         options: {
+            plugins: {
+                datalabels: {
+                    formatter: (value, ctx) => {
+                      const total = ctx.chart.$totalizer.totals[ctx.dataIndex]
+                      return total;/*.toLocaleString('fr-FR', {
+                        style: 'currency',
+                        currency: 'EUR'
+                      })*/
+                    },
+                    display: function(ctx) {
+                       return ctx.datasetIndex === ctx.chart.$totalizer.utmost
+                    }
+                  }
+             },
+
             legend: {
                 labels: {
                     // This more specific font property overrides the global property
@@ -578,7 +692,7 @@ function showFinalResults() {
                 }],
                 yAxes: [{
                     stacked: true,
-                    ticks: {fontSize: 26}
+                    ticks: {fontSize: 26, max: maxPoints}
                 }]
             }
         }
@@ -593,7 +707,9 @@ function showFinalResults() {
 function showNavigation(){
     let to_hide = document.querySelectorAll("[data-id='" + document.quiz.current.selector + "']")[0];
     let navigation = document.getElementById('navigation');
+    let results = document.getElementById('final-results');
     
+    fadeOut(results);
     fadeOut(to_hide);
     fadeArrows('out');
     fadeIn(navigation);

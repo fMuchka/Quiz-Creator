@@ -6,7 +6,11 @@ class Quiz{
     constructor(obj){
         this.themeArray = obj.theme;
         this.team = [];
-        this.current = {selector: null, t: null, q: null};    // in format t:n; q:
+        this.current = {selector: null, t: null, q: null, answerTable: false};    // in format t:n; q:
+
+        this.mediaRef = [];
+
+        this.initMediaRef();
     }
 
     /**
@@ -17,5 +21,26 @@ class Quiz{
         for (let i = 0; i < names.length; i++) {
             this.team[i] = new Team(names[i], i);
         }
+    }
+
+    /**
+     * Init mediaRef array by declaring new array on n elements
+     *  n = number of themes
+     */
+    initMediaRef() {
+        for (let i = 0; i < this.themeArray.length; i++) {
+            this.mediaRef[i] = [];
+        }
+    }
+
+    getThemeMaxPoint(index){
+        let theme = this.themeArray[index].question;
+        let max = 0;
+
+        for (let i = 0; i < theme.length; i++) {
+            max += theme[i].points;    
+        }
+        
+        return max;
     }
 }

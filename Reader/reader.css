@@ -5,8 +5,7 @@
     --red: #c0392b;
     --grey: #7f8c8d;
     --light-grey: #ecf0f1;
-    --orange: #d35400;
-
+    --orange: #2980b9;
     --roboto: 'Roboto', sans-serif;
 }
 
@@ -251,7 +250,7 @@ div#next:hover span{
         'theme point progress'
         'text text text'
         'media media media';
-    grid-template-rows: 50px repeat(2, 1fr);
+    grid-template-rows: 50px 45vh 45vh;
     grid-template-columns: repeat(3, 1fr);
     width: 80vw;
     height: 90vh;
@@ -320,15 +319,15 @@ audio.media {
 
 #navigation{
     display: none;
-    width: 60%;
-    height: 80%;
-    background-color: var(--blue);
-    margin: auto;
-    margin-top: 85px;
+    width: 95%;
+    height: 95%;
+    background-color: var(--light-grey);
+    /* margin: auto; */
+    /* margin-top: 85px; */
     justify-content: center;
     justify-items: center;
     padding: 15px;
-    align-content: center;
+    align-content: space-around;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -381,28 +380,42 @@ audio.media {
 }
 
 .answer-table {
-    grid-area: media;
+    /* grid-area: media; */
     width: 100%;
-    display: di;
+    height: 100vh;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-rows: 44px repeat(10, 1fr); */
+    /* grid-template-areas:
+        'answer answer'
+        'team team'; */
+    display: none;
 }
 
 .answer-text {
     display: flex;
     justify-content: center;
     font-size: 50px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: underline var(--orange);
     margin-bottom: 25px;
+    grid-area: answer;
+    text-align: center;
+    display: grid;
+    grid-area: media;
+    align-self: center;
 }
 
 .answer-table div {
     display: flex;
     justify-content: center;
     place-content: space-between;
-    width: 50%;
-    height: 50px;
+    width: 80%;
+    /* height: 50px; */
     margin: auto;
-    border-bottom: .5px dashed black;
+    /* border-bottom: .5px dashed black; */
+    /* flex-flow: row; */
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .answer-table div > label {
@@ -412,9 +425,9 @@ audio.media {
 }
 
 .answer-table div > input {
-    width: 60px;
+    width: 100px;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 ul.progress-bar {
@@ -436,6 +449,7 @@ div#enlarge-modal-background {
     height: 100vh;
     position: fixed;
     display: none;
+    z-index: 5;
 }
 
 #enlarge-modal-background img {
@@ -511,11 +525,11 @@ div#previous-control {
 }
 
 .progress-bar li {
-    height: 50%;
-    width: 33%;
+    height: 25px;
+    width: 25px;
     border-radius: 30px;
     z-index: 2;
-    border: 1px solid var(--black);
+    border: 1px solid var(--grey);
 }
 
 li.current {
@@ -523,17 +537,17 @@ li.current {
 }
 
 li.remaining {
-    background-color: var(--grey);
+    background-color: var(--light-grey);
 }
 
 li.finished {
-    background-color: var(--green);
+    background-color: var(--orange);
 }
 
 li.finished:after {
-    content: "";
-    background-color: var(--green);
-    content: "";
+    /* content: ""; */
+    background-color: var(--light-grey);
+    /* content: ""; */
     height: 5px;
     position: absolute;
     width: 25%;
@@ -546,7 +560,7 @@ li.finished:after {
 li.remaining:after {
     content: "";
     height: 5px;
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     position: absolute;
     width: inherit;
     z-index: 3;
@@ -555,25 +569,25 @@ li.remaining:after {
 
 
 ul.progress-bar:after {
-    content: "";
+    /* content: ""; */
     position: absolute;
-    background-color: var(--grey);
+    background-color: var(--light-grey);
     height: 5px;
     width: inherit;
     border: 1px solid var(--black);
 }
 
 li.finished:first-child:before {
-    content: "";
+    /* content: ""; */
     width: 100px;
     height: 5px;
     position: absolute;
-    background-color: var(--green);
+    background-color: var(--light-grey);
     top: 22px;
     left: 0px;
 }
 li.current:first-child:before {
-    content: "";
+    /* content: ""; */
     width: 50px;
     height: 5px;
     position: absolute;
@@ -592,4 +606,21 @@ div#previous:hover {
 div#next:hover {
     right: 0px;
     cursor: pointer;
+}
+
+img.media.answer-media {
+    grid-area: text;
+}
+
+audio.media.answer-media {
+    grid-area: text;
+}
+
+.team-answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-answers:nth-child(2n) {
+    background-color: var(--blue);
 }

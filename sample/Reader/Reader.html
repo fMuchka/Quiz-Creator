@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="reader.css">  
+        <script src="reader-script.js"></script>
+        <script src="quiz.js"></script>
+        <script src="team.js"></script>
+        <script src="Chart.bundle.js"></script>
+        <script src="chartjs-plugin-datalabels.min.js"></script>
+    </head>
+    <body>
+        <!-- Right corner logo -->
+        <img id="logo" src="sviniPivemNezarmoutis_logo.png">
+
+        <div id="quick-access" style="left: -160px;">
+            <button class="button" onclick="showFinalResults()">Výsledky</button>
+            <button class="button" onclick="showNavigation()">Témata</button>
+        </div>
+        
+        <!-- Main menu -->
+        <div id="main-menu" class="menu fade-able">
+            <span class="menu-title">Svini Pivem Neurazíš</span>
+            <img class="quiz-logo" src=".\fm_logo.png" alt="Chybí logo :(">
+            <div class="input-wrapper">
+                <input type="file" id="file-upload" onchange="loadFile()">
+                <label for="file-upload">Vyber kvíz</label>
+            </div>
+        </div>
+
+        <!-- Create teams -->
+        <div id="create-team" class="menu fade-able">
+            <span class="menu-title">Tvorba týmů</span>
+            <div contenteditable="true">
+                <ul id="team-list">
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="button" onclick="createTeam()">Start</div>
+        </div>
+
+        <div id="navigation" class="menu fade-able">
+
+        </div>
+
+        <div id="enlarge-modal-background" onclick="minimizeIMG()">
+            <img>
+            </img>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz-wrapper">
+       
+        <div id="previous" class="fade-able" onclick="nextQuestion(-1)">
+            <div></div>              
+        </div>
+ 
+        
+        <div id="next" class="fade-able" onclick="nextQuestion(1)">
+            <div></div>
+        </div>
+        
+            
+
+        </div>
+
+        <div id="final-results" class="fade-able">
+            <canvas id="final-results-graphs"></canvas>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,184 @@
+{
+	"theme": [
+		{
+			"question": [
+				{
+					"text": "Poznej seriál",
+					"media": "..//media//Firefly Opening Theme.mp3",
+					"answer": "Firefly",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál",
+					"media": "..//media//Vikings Intro HD.mp3",
+					"answer": "Vikings",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál",
+					"media": "..//media//Comeback znělka 1.mp3",
+					"answer": "Comeback",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál",
+					"media": "..//media//Pojišťovna Štěstí.mp3",
+					"answer": "Pojišťovna štěstí",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál",
+					"media": "..//media//Narcos - Opening Credits - Netflix [HD].mp3",
+					"answer": "Narcos",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				}
+			],
+			"title": "Seriálové znělky"
+		},
+		{
+			"question": [
+				{
+					"text": "Tento seriál je o chlápkovi, který skoro deset let mučí své děti vyprávěním šílených detailů ze svého mládí, aby jim popsal ženu svého života.",
+					"media": "..//media//06.jpg",
+					"answer": "How I Met Your Mother",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál: 'Můj bože, zabili Kennyho!' 'Vy parchanti!'",
+					"media": "",
+					"answer": "South Park",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál podle ukázky",
+					"media": "..//media//3B3.mp4",
+					"answer": "Gilmorova děvčata",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál podle obrázku",
+					"media": "..//media//09.png",
+					"answer": "Star Gate: SG-1",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Poznej seriál podle ukázky",
+					"media": "..//media//3B5.mp4",
+					"answer": "Breaking Bad",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				}
+			],
+			"title": "Poznej seriál"
+		},
+		{
+			"question": [
+				{
+					"text": "Z jakého filmu je tato hudba, jenž na videu ztvárnil dánský symfonický orchestr?",
+					"media": "..//media//5A1.mp4",
+					"answer": "The Good, The Bad, The Ugly",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Z jaké filmové série je tato hudba?",
+					"media": "..//media//5A2.mp3",
+					"answer": "Indiana Jones",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Takto český symfonický orchestr ztvárnil jistou filmovou hudbu. /nZ jaké filmové série hudba je? ",
+					"media": "..//media//5A3.mp4",
+					"answer": "Piráti z Karibiku",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "V jakém filmu můžete slyšet tuto melodii?",
+					"media": "..//media//5A4.wav.mp3",
+					"answer": "Poslední mohykán",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Z jaké série je tato hudba, jenž na videu ztvárnil polský dětský národní symfonický orchestr?",
+					"media": "..//media//5A5.mp4",
+					"answer": "Star Wars",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				}
+			],
+			"title": "Filmová hudba"
+		},
+		{
+			"question": [
+				{
+					"text": "V roce 2017 navštívil Donald Trump Francii ku příležitosti oslav dobytí Bastilly./nTakhle ho francouzský vojenský sbor přivítal. Ztvárnili písně jisté francouzské disco kapely. Které?",
+					"media": "..//media//5B1.mp4",
+					"answer": "Daft Punk",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Tohle je vystoupení největší rockové kapely na světě. Kolik má kapela členů? /n[tolerance 10%]",
+					"media": "..//media//5B2.mp4",
+					"answer": "1000",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Přišli na divadlo a dostali flashmob. Kdo je autorem písně, již uslyšíte a jak se píseň jmenuje?",
+					"media": "..//media//5B3.mp4",
+					"answer": "Simon and Garfunkel - Sound of Silence",
+					"points": 1,
+					"step": 0.5,
+					"extra_info": ""
+				},
+				{
+					"text": "V roce 2013 zahrála americká metalová skupina tam, kde ještě nikdo nezahrál. Uspořádali koncert na Antarktidě. Jak se tato kapela jmenuje?",
+					"media": "..//media//09.jpg",
+					"answer": "Mettalica",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				},
+				{
+					"text": "Takto vzpomínal Utrecht (Nizozemsko) na svou zesnulou hvězdu v roce 2018, kdy zemřela ve svých 28 letech. O jakou hudební hvězdu se jednalo?",
+					"media": "..//media//5B5.mp4",
+					"answer": "Avicii",
+					"points": 1,
+					"step": 1,
+					"extra_info": ""
+				}
+			],
+			"title": "Netradiční hudební vystoupení"
+		}
+	]
+}
